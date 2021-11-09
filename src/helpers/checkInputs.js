@@ -1,3 +1,4 @@
+const calAge = (date) => new Date(Date.now() - new Date(date).getTime()).getFullYear() - 1970;
 export const checkInputs = {
   firstName: ({ value, required }) => {
     if (required && !value) {
@@ -44,6 +45,23 @@ export const checkInputs = {
       return {
         isValid: false,
         msg: 'Email is incorrect.',
+      };
+    }
+    return {
+      isValid: true,
+      msg: '',
+    };
+  },
+  birthDate: ({ value, required }) => {
+    if (required && !value) {
+      return {
+        isValid: false,
+        msg: 'This field is required',
+      };
+    } if (required && calAge(value) < 18) {
+      return {
+        isValid: false,
+        msg: 'Min Age 18',
       };
     }
     return {

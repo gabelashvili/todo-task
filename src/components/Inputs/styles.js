@@ -81,3 +81,16 @@ export const Triangle = styled.div`
         left:1px;
     }
 `;
+
+export const Textarea = styled.textarea`
+border-radius: 5px;
+width: 100%;
+display: block;
+box-sizing: border-box;
+padding: 10px;
+color: #222;
+font-weight: bold;
+&:focus {
+    outline: none;
+};
+`;

@@ -27,3 +27,14 @@ export const NameWrapper = styled.div`
     grid-gap: 20px;
     width: 100%:
 `;
+
+export const Button = styled.button`
+    width: 140px;
+    height: 50px;
+    color: #fff;
+    background: #4966b1;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+`;

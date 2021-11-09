@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { faUser, faEnvelope } from '@fortawesome/fontawesome-free-solid';
+import { faUser, faEnvelope, faCalendar } from '@fortawesome/fontawesome-free-solid';
 import { useState } from 'react';
 import TextInput from '../Inputs/TextInput';
 import {
-  Div, Title, Desc, Form, NameWrapper,
+  Div, Title, Desc, Form, NameWrapper, Button,
 } from './styles';
 import { checkInputs } from '../../helpers/checkInputs';
+import Textarea from '../Inputs/Textarea';
 
 const NewUser = () => {
   const [values, setValues] = useState(
@@ -24,6 +25,14 @@ const NewUser = () => {
         required: true,
         value: null,
         isFocused: false,
+      },
+      birthDate: {
+        required: true,
+        value: null,
+        isFocused: false,
+      },
+      aboutMe: {
+        value: null,
       },
     },
   );
@@ -46,6 +55,21 @@ const NewUser = () => {
         isFocused: true,
       },
     });
+  };
+
+  const handleSave = () => {
+    let isError = false;
+    const data = Object.keys(values).reduce((acc, cur) => {
+      if (checkInputs[cur] && !checkInputs[cur](values[cur]).isValid) {
+        isError = true;
+      }
+      return {
+        ...acc,
+        [cur]: { ...values[cur], isFocused: values[cur].required },
+      };
+    }, {});
+    setValues(data);
+    console.log(isError);
   };
 
   return (
@@ -85,6 +109,22 @@ const NewUser = () => {
           isFocused={values.email.isFocused}
           placeHolder="E-mail"
         />
+        <TextInput
+          type="date"
+          icon={faCalendar}
+          value={values.birthDate.value}
+          onChange={(e) => handleInputChange(e, 'birthDate')}
+          isValid={checkInputs.birthDate(values.birthDate).isValid}
+          errorMsg={checkInputs.birthDate(values.birthDate).msg}
+          onFocus={() => handleInputFocus('birthDate')}
+          isFocused={values.birthDate.isFocused}
+        />
+        <Textarea
+          placeholder="About me"
+          value={values.aboutMe.value}
+          onChange={(e) => handleInputChange(e, 'aboutMe')}
+        />
+        <Button type="button" onClick={handleSave}>Add New User</Button>
       </Form>
     </Div>
   );

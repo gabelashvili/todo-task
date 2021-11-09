@@ -5,11 +5,11 @@ import {
 } from './styles';
 
 const TextInput = ({
-  value, onChange, icon, isValid, onFocus, isFocused, errorMsg, placeHolder,
+  value, onChange, icon, isValid, onFocus, isFocused, errorMsg, placeHolder, type = 'text',
 }) => (
   <Div>
     <Input
-      type="text"
+      type={type}
       placeholder={placeHolder}
       value={value || ''}
       onChange={(e) => onChange(e)}
