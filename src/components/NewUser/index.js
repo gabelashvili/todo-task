@@ -3,7 +3,7 @@ import { faUser, faEnvelope } from '@fortawesome/fontawesome-free-solid';
 import { useState } from 'react';
 import TextInput from '../Inputs/TextInput';
 import {
-  Div, Title, Desc, Form,
+  Div, Title, Desc, Form, NameWrapper,
 } from './styles';
 import { checkInputs } from '../../helpers/checkInputs';
 
@@ -53,26 +53,28 @@ const NewUser = () => {
       <Title>Add New User</Title>
       <Desc>Please Fill All Required FIelds</Desc>
       <Form>
-        <TextInput
-          icon={faUser}
-          value={values.firstName.value}
-          onChange={(e) => handleInputChange(e, 'firstName')}
-          isValid={checkInputs.firstName(values.firstName).isValid}
-          errorMsg={checkInputs.firstName(values.firstName).msg}
-          onFocus={() => handleInputFocus('firstName')}
-          isFocused={values.firstName.isFocused}
-          placeHolder="First name"
-        />
-        <TextInput
-          icon={faUser}
-          value={values.lastName.value}
-          onChange={(e) => handleInputChange(e, 'lastName')}
-          isValid={checkInputs.lastName(values.lastName).isValid}
-          errorMsg={checkInputs.lastName(values.lastName).msg}
-          onFocus={() => handleInputFocus('lastName')}
-          isFocused={values.lastName.isFocused}
-          placeHolder="Last name"
-        />
+        <NameWrapper>
+          <TextInput
+            icon={faUser}
+            value={values.firstName.value}
+            onChange={(e) => handleInputChange(e, 'firstName')}
+            isValid={checkInputs.firstName(values.firstName).isValid}
+            errorMsg={checkInputs.firstName(values.firstName).msg}
+            onFocus={() => handleInputFocus('firstName')}
+            isFocused={values.firstName.isFocused}
+            placeHolder="First name"
+          />
+          <TextInput
+            icon={faUser}
+            value={values.lastName.value}
+            onChange={(e) => handleInputChange(e, 'lastName')}
+            isValid={checkInputs.lastName(values.lastName).isValid}
+            errorMsg={checkInputs.lastName(values.lastName).msg}
+            onFocus={() => handleInputFocus('lastName')}
+            isFocused={values.lastName.isFocused}
+            placeHolder="Last name"
+          />
+        </NameWrapper>
         <TextInput
           icon={faEnvelope}
           value={values.email.value}

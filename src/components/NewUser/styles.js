@@ -20,3 +20,10 @@ export const Form = styled.form`
     display: grid;
     grid-row-gap: 35px;
 `;
+
+export const NameWrapper = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+    width: 100%:
+`;

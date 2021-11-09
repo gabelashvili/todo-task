@@ -6,7 +6,8 @@ export const Div = styled.div`
     color: black;
     justify-contents: center;
     display: flex;
-    padding: 50px;
+    padding: 50px 15px;
+    box-sizing: border-box;
 `;
 
 export const Ul = styled.ul`
