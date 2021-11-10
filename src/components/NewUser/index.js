@@ -7,6 +7,7 @@ import {
 } from './styles';
 import { checkInputs } from '../../helpers/checkInputs';
 import Textarea from '../Inputs/Textarea';
+import Checkbox from '../Inputs/Checkbox';
 
 const NewUser = () => {
   const [values, setValues] = useState(
@@ -118,6 +119,9 @@ const NewUser = () => {
           errorMsg={checkInputs.birthDate(values.birthDate).msg}
           onFocus={() => handleInputFocus('birthDate')}
           isFocused={values.birthDate.isFocused}
+        />
+        <Checkbox
+          label="Hide Email?"
         />
         <Textarea
           placeholder="About me"
