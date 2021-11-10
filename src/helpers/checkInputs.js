@@ -69,4 +69,28 @@ export const checkInputs = {
       msg: '',
     };
   },
+  productName: ({ value, required }) => {
+    if (required && !value) {
+      return {
+        isValid: false,
+        msg: 'This field is required',
+      };
+    }
+    return {
+      isValid: true,
+      msg: '',
+    };
+  },
+  productPrice: ({ value, required }) => {
+    if (required && !value) {
+      return {
+        isValid: false,
+        msg: 'This field is required',
+      };
+    }
+    return {
+      isValid: true,
+      msg: '',
+    };
+  },
 };

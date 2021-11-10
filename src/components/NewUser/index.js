@@ -128,7 +128,7 @@ const NewUser = () => {
           value={values.aboutMe.value}
           onChange={(e) => handleInputChange(e, 'aboutMe')}
         />
-        <Button type="button" onClick={handleSave}>Add New User</Button>
+        <Button type="button" onClick={handleSave}>Add User</Button>
       </Form>
     </Div>
   );

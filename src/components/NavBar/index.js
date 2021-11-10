@@ -11,7 +11,7 @@ const NavBar = ({ selectedStep, setSelectedStep }) => (
       </Li>
       <Li onClick={() => setSelectedStep(2)} active={selectedStep === 2}>
         <Step>2 </Step>
-        Content
+        Add new product
       </Li>
     </Ul>
   </Div>
