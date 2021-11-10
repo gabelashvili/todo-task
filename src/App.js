@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import Container from './components/Container';
+import rootReducer from './store/rootReducer';
 
 const Div = styled.div`
   height: 100vh;
@@ -7,11 +10,15 @@ const Div = styled.div`
   align-items: center;
 `;
 
+const store = createStore(rootReducer);
+
 function App() {
   return (
-    <Div>
-      <Container />
-    </Div>
+    <Provider store={store}>
+      <Div>
+        <Container />
+      </Div>
+    </Provider>
   );
 }
 

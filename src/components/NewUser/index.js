@@ -70,7 +70,6 @@ const NewUser = () => {
       };
     }, {});
     setValues(data);
-    console.log(isError);
   };
 
   return (

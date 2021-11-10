@@ -30,12 +30,15 @@ export const Input = styled.input`
   }};
     height: 50px;
     box-sizing: border-box;
-    padding: 0 50px 0 40px;
+    padding: 0 50px 0  ${({ isIconExist }) => (isIconExist ? '40px' : '10px')};
     color: #222;
     font-weight: bold;
     &:focus {
         outline: none;
     };
+    &:disabled {
+        background: rgba(93, 93, 93, 0.2);
+    }
 `;
 
 export const ErrorTextWrapper = styled.div`

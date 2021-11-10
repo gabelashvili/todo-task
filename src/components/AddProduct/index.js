@@ -1,15 +1,21 @@
 /* eslint-disable no-unused-vars */
 import { faFile, faDollarSign, faCalculator } from '@fortawesome/fontawesome-free-solid';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import TextInput from '../Inputs/TextInput';
 import {
-  Div, Title, Desc, Form, NameWrapper, Button,
+  Div,
+  Title,
+  Desc,
+  Form,
+  Button,
 } from './styles';
 import { checkInputs } from '../../helpers/checkInputs';
-import Textarea from '../Inputs/Textarea';
-import Checkbox from '../Inputs/Checkbox';
+import actions from '../../store/ProductsList/actions';
+import Table from './Table';
 
 const NewUser = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState(
     {
       productName: {
@@ -60,7 +66,11 @@ const NewUser = () => {
       };
     }, {});
     setValues(data);
-    console.log(isError);
+    if (!isError) {
+      const newData = Object.keys(values)
+        .reduce((acc, cur) => ({ ...acc, [cur]: values[cur].value }), {});
+      dispatch(actions.addProduct(newData));
+    }
   };
 
   return (
@@ -98,6 +108,7 @@ const NewUser = () => {
         />
         <Button type="button" onClick={handleSave}>Add Product</Button>
       </Form>
+      <Table />
     </Div>
   );
 };
